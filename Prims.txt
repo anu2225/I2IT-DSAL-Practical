@@ -1,0 +1,114 @@
+primsalgo.cpp =>
+
+#include<iostream>
+using namespace std;
+class primsalgo
+{
+private :
+	int n;
+	int mat[10][10];
+public:
+              primsalgo()
+	{
+                             cout<<"Enter no of vertices: ";
+		cin>>n;
+		for (int i=0;i<n;i++)
+		{
+			for (int j=0;j<n;j++)
+			{
+				mat[i][j]=0;
+			}
+		}
+	}
+	void create();
+	void display();
+	void prims();
+};
+int main()
+{
+	primsalgo obj;
+	obj.create();
+	obj.display();
+	obj.prims();
+}
+void primsalgo::create()
+{
+	int v1,v2,cost;
+	int ans;
+	do
+	{
+		cout<<"Enter edge and all its cost: ";
+		cin>>v1>>v2>>cost;
+		mat[v1][v2]=cost;
+		mat[v2][v1]=cost;
+		cout<<"Do you want to enter one more edge: ";
+		cin>>ans;
+                }while(ans==1);
+}
+void primsalgo::display()
+{
+	int i,j;
+	cout<<"Graph using adjancy matrix: ";
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			cout<< mat[i][j]<<" \t";
+		}
+		cout<<"\n";
+	}
+}
+void primsalgo::prims()
+{
+	int mincost,min,v1,v2;
+	bool visited[n];
+	mincost=0;
+	for(int q=0;q<=n;q++)
+	{
+		visited[q]=0;
+	}
+	visited[0]=1;
+	for (int i=0;i<n;i++)
+	{
+		min=-999;
+		for(int j=0;j<n;j++)
+		{
+			if(visited[j]==1){
+				for(int k=0;k<n;k++)
+				{
+					if ((visited[k]!=1)&&(mat[j][k]<min)&&(mat[j][k]!=0))
+					{
+						min=mat[j][k];
+						v1=j;
+						v2=k;
+					}
+				}
+			}
+}
+		//cout<<"edge not found! "<<v1<<"---"<<v2<<"\n";
+		visited[v2]=1;
+		mincost+=min;
+	 	cout<<"Mincost is: "<<mincost;
+             }
+//	cout<<"mincost is:"<<mincost;
+}
+
+OUTPUT =>
+
+Enter no of vertices: 3
+Enter edge and all its cost: 0 1 10
+Do you want to enter one more edge: 1
+Enter edge and all its cost: 0 2 20
+Do you want to enter one more edge: 1
+Enter edge and all its cost: 0 3 30
+Do you want to enter one more edge: 1
+Enter edge and all its cost: 2 3 40
+Do you want to enter one more edge: 0
+Graph using adjancy matrix: 0 	10 	20 	
+10 	0 	0 	
+20 	0 	0 	
+
+
+
+
+

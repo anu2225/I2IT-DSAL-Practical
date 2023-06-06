@@ -1,0 +1,88 @@
+#include<iostream>
+using namespace std;
+class BST
+{private:
+	struct node
+	{
+	int data;
+	node *lc;
+	node *rc;
+	}*root;
+public:
+BST()
+{
+root=NULL;
+}
+void create();
+void display();
+void inOrder( node *root);
+};
+void BST:: create()
+{
+node *temp;
+temp=new node;
+temp->lc=NULL;
+temp->rc=NULL;
+cout<<"Enter data";
+cin>>temp->data;
+
+if(root==NULL)
+{root=temp;}
+else
+{
+node* curr;
+curr=root;
+if(temp->data<curr->data)
+{ 
+	if(curr->lc==NULL)
+	{curr->lc=temp;}
+	else
+	{curr=curr->lc;}
+}
+if(temp->data>curr->data)
+{ 
+	if(curr->rc==NULL)
+	{curr->rc=temp;}
+	else
+	{curr=curr->rc;}
+}
+}
+}
+void BST::display()
+{
+inOrder(root);
+}
+void BST::inOrder( struct node *root) {
+        if (root == NULL) {
+                return;
+        }   
+        inOrder(root->lc);
+        cout<<root->data;
+        inOrder(root->rc);
+}
+int main(){
+BST bst;
+bst.create();
+bst.display();
+return 0;
+}
+
+
+OUTPUT =>
+enter data 1
+1
+ Do u want to add one more node?1
+ enter data 2
+ 2
+ Do u want to add one more node?1
+ enter data 3
+ 3
+Do u want to add one more node?1
+ enter data 4
+ 4
+ Do u want to add one more node?1
+ enter data 5
+ 5
+ Do u want to add one more node?0
+
+

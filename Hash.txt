@@ -1,0 +1,177 @@
+Hash.py =>
+
+#Program on hash table
+#Menu Driven
+print("Select \n10: Linear Probing \n20:Quadratic Probing \n30:Exit")
+ch=int(input("\nEnter your choice: "))
+#Linear probing
+if (ch==10):
+    print("Linear Probing...")
+    size1=int(input("Enter the size of hash table: "))
+    ht1=[]
+    #Insert -1 in all positions
+    for i in range (size1):
+        ht1.append(-1)
+    print(ht1)
+
+    print("\nPress \n1:Insert \n2:Find element \n3:Delete")
+    ans=int(input("\nEnter your choice: "))
+    if (ans==1):
+        print("\nInertion Operation")
+        x=1
+        while(x==1):           
+            key=int(input("\nEnter the key: "))
+            #key will be inserted at last position of the digit
+            i=key%size1
+            if(ht1[i]==-1):
+                ht1[i]=key
+            else:
+            #if collision occurs
+                while(ht1[i]!=-1):
+                    i=(i+1)%size1
+                ht1[i]=key
+            #print hash table
+            print(ht1)
+            x=int(input("Press 1 to insert: "))
+    
+    elif(ans==2):
+        print("\nSearch operation")
+        
+
+    elif(ans==3):
+        print("\nDeletion operation")
+        
+    else:
+        print("\nPlease enter valid choice")
+        
+#Quadratic probing    
+elif (ch==20):
+    print("Quadratic Probing...")
+    size2=int(input("Enter the size of hash table: "))
+    ht2=[]
+    #Insert -1 in all positions
+    for i in range (size2):
+        ht2.append(-1)
+    print(ht2)
+
+    print("\nPress \n1:Insert \n2:Find element \n3:Delete")
+    ans=int(input("\nEnter your choice: "))
+    if (ans==1):
+        print("\nInertion Operation")
+        x=1
+        while(x==1):  
+            key=int(input("\nEnter the key: "))
+            #key will be inserted at last position of the digit
+            i=key%size2
+            if(ht2[i]==-1):
+                ht2[i]=key
+            else:
+            #if collision occurs
+                step=1
+                i1=i
+                while(ht2[i1]!=-1):
+                    i1=(i+(step*step))%size2
+                    step=step+1
+                ht2[i1]=key
+            #print hash table
+            print(ht2)
+            x=int(input("Press 1 to insert: "))
+        
+    elif (ans==2):
+        print("\nSearch operation")
+        
+    elif(ans==3):
+        print("\nDeletion operation")
+        
+    else:
+        print("\nPlease enter valid choice")
+#Exited
+elif (ch==30):
+    print("\nProgram Exited...")
+    
+else:
+    print("\nPlease enter valid choice:")
+    
+    
+==>Output:
+
+Select 
+10: Linear Probing 
+20:Quadratic Probing 
+30:Exit
+
+Enter your choice: 10
+Linear Probing...
+Enter the size of hash table: 10
+[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+
+Press 
+1:Insert 
+2:Find element 
+3:Delete
+
+Enter your choice: 1
+
+Inertion Operation
+
+Enter the key: 10
+[10, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+Press 1 to insert: 1
+
+Enter the key: 20
+[10, 20, -1, -1, -1, -1, -1, -1, -1, -1]
+Press 1 to insert: 1
+
+Enter the key: 34
+[10, 20, -1, -1, 34, -1, -1, -1, -1, -1]
+Press 1 to insert: 1
+
+Enter the key: 23
+[10, 20, -1, 23, 34, -1, -1, -1, -1, -1]
+Press 1 to insert: 1
+
+Enter the key: 30
+[10, 20, 30, 23, 34, -1, -1, -1, -1, -1]
+Press 1 to insert: 1
+
+Enter the key: 11
+[10, 20, 30, 23, 34, 11, -1, -1, -1, -1]
+Press 1 to insert: 0
+
+Select 
+10: Linear Probing 
+20:Quadratic Probing 
+30:Exit
+
+Enter your choice: 20
+Quadratic Probing...
+Enter the size of hash table: 10
+[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+
+Press 
+1:Insert 
+2:Find element 
+3:Delete
+
+Enter your choice: 1
+
+Inertion Operation
+
+Enter the key: 10
+[10, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+Press 1 to insert: 1
+
+Enter the key: 55
+[10, -1, -1, -1, -1, 55, -1, -1, -1, -1]
+Press 1 to insert: 1
+
+Enter the key: 11
+[10, 11, -1, -1, -1, 55, -1, -1, -1, -1]
+Press 1 to insert: 1
+
+Enter the key: 21
+[10, 11, 21, -1, -1, 55, -1, -1, -1, -1]
+Press 1 to insert: 1
+
+Enter the key: 31
+[10, 11, 21, -1, -1, 55, -1, 31, -1, -1]
